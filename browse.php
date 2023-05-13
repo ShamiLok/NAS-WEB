@@ -7,6 +7,7 @@ if (is_dir($folder) && is_readable($folder)) {
   // Получаем список файлов и папок
   $folders = array();
   $files = array();
+  $fileSize = array();
   $handle = opendir($folder);
   
   while ($entry = readdir($handle)) {
@@ -15,6 +16,7 @@ if (is_dir($folder) && is_readable($folder)) {
         $folders[] = $entry;
       } else {
         $files[] = $entry;
+        $fileSize[] = filesize($folder . '\\' . $entry);
       }
     }
   }
@@ -22,7 +24,7 @@ if (is_dir($folder) && is_readable($folder)) {
 
   // Отправляем JSON-ответ
   header('Content-Type: application/json');
-  echo json_encode(array('folders' => $folders, 'files' => $files));
+  echo json_encode(array('folders' => $folders, 'files' => $files, 'fileSize' => $fileSize));
 } else {
   header('HTTP/1.1 404 Not Found');
 }

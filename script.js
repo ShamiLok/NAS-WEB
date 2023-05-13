@@ -13,34 +13,23 @@ function browseFolder(folderPath) {
   //инициализация запроса
   xhr.open('GET', 'browse.php?folder=' + encodeURIComponent(folderPath), true);
 
-  // console.log(folder)
-  //обработчик события свойства readyState
+  // обработчик события свойства readyState
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        //JSON.parse - получить обьект, а не строку
         const response = JSON.parse(xhr.responseText);
-         
-        //Отображаем содержимое папки
-        // response.folders.forEach(function (folder) {
-        //   const link = document.createElement('a');
-        //   link.innerText = folder;
-        //   link.href = '#';
-        //   link.onclick = function () {
-        //     browseFolder(folderPath + '\\' + folder);
-        //     return false;
-        //   };
-        //   content.appendChild(link);
-        //   content.appendChild(document.createElement('br'));
-        // });
+
+        //folder
         response.folders.forEach(function (folder) {
           const link = document.createElement('a');
+          const folderEl = document.createElement('div');
+          folderEl.className = 'folder storage_el';
           link.innerText = folder;
           link.href = '#';
           if(folder == '.') {
             link.onclick = function () {
-              let folderPathArr = folderPath.split('\\')
-              folderPathArr.pop()
+              let folderPathArr = folderPath.split('\\');
+              folderPathArr.pop();
               browseFolder(folderPathArr.join('\\'));
               return false;
             };
@@ -50,19 +39,21 @@ function browseFolder(folderPath) {
               return false;
            };
           }
-          
-          content.appendChild(link);
-          content.appendChild(document.createElement('br'));
+          content.appendChild(folderEl).appendChild(link);
         });
-        
-        
-        response.files.forEach(function (file) {
+
+        //file
+        response.files.forEach(function (file, index) {
+          const fileEl = document.createElement('div');
           const link = document.createElement('a');
+          const size = document.createElement('span');
+          size.innerText = response.fileSize[index] + ' Bytes'
+          fileEl.className = 'file storage_el';
           link.innerText = file;
           link.href = 'download.php?file=' + encodeURIComponent(folderPath + '\\' + file);
-          // link.href = 'download.php?file=' + (folderPath + '/' + file);
-          content.appendChild(link);
-          content.appendChild(document.createElement('br'));
+          let b = content.appendChild(fileEl)
+          b.appendChild(link);
+          b.appendChild(size);
         });
       } else {
         console.error(xhr.statusText);
@@ -72,7 +63,4 @@ function browseFolder(folderPath) {
   xhr.send(null);
 }
 
-// Начинаем с корневой папки
 browseFolder('storage');
-
-
