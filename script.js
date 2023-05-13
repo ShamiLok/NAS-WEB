@@ -2,15 +2,9 @@ const content = document.getElementById('content');
 const path = document.getElementById('path');
 
 function browseFolder(folderPath) {
-  // Очищаем содержимое контейнера
   content.innerHTML = '';
-
-  // Отображаем путь
   path.innerText = folderPath;
-
-  // Отправляем AJAX-запрос на сервер
   const xhr = new XMLHttpRequest();
-  //инициализация запроса
   xhr.open('GET', 'browse.php?folder=' + encodeURIComponent(folderPath), true);
 
   // обработчик события свойства readyState
@@ -30,7 +24,9 @@ function browseFolder(folderPath) {
             link.onclick = function () {
               let folderPathArr = folderPath.split('\\');
               folderPathArr.pop();
-              browseFolder(folderPathArr.join('\\'));
+              if(folderPathArr.join('\\')) {
+                browseFolder(folderPathArr.join('\\')); 
+              }
               return false;
             };
           } else {
@@ -51,9 +47,9 @@ function browseFolder(folderPath) {
           fileEl.className = 'file storage_el';
           link.innerText = file;
           link.href = 'download.php?file=' + encodeURIComponent(folderPath + '\\' + file);
-          let b = content.appendChild(fileEl)
-          b.appendChild(link);
-          b.appendChild(size);
+          const appendFileEl = content.appendChild(fileEl)
+          appendFileEl.appendChild(link);
+          appendFileEl.appendChild(size);
         });
       } else {
         console.error(xhr.statusText);

@@ -12,10 +12,15 @@ a {
 
 h1 {
     text-align: center;
+    padding: 10px 0;
+}
+
+.storage-nav {
+    width: 400px;
 }
 
 #path {
-    width: 400px;
+    width: 100%;
     padding: 5px;
     background: #f5f5f5;
     border: 1px #000 solid;
@@ -23,17 +28,39 @@ h1 {
     margin: 5px;
 }
 
-.storage_el {
-    margin: 25px 10px;
-}
-
-.storage_el a {
+.storage-nav__info {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 10px;
     padding: 5px 15px;
     background: #f5f5f5;
     border-radius: 5px;
 }
 
+.storage-nav__info span {
+    display: inline-block;
+}
+
+.storage_el {
+    display: flex;
+    margin: 20px 10px;
+    padding: 5px 15px;
+    background: #f5f5f5;
+    border-radius: 5px;
+    transition: background .3s;
+}
+
+.storage_el:hover {
+    background: #ececec;
+}
+
+.storage_el a {
+    width: 100%;
+}
+
 .file span{
+    display: inline-block;
     font-size: 11px;
     vertical-align: bottom;
+    white-space: nowrap;
 }
