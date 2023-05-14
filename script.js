@@ -7,7 +7,6 @@ function browseFolder(folderPath) {
   const xhr = new XMLHttpRequest();
   xhr.open('GET', 'browse.php?folder=' + encodeURIComponent(folderPath), true);
 
-  // обработчик события свойства readyState
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
@@ -17,9 +16,13 @@ function browseFolder(folderPath) {
         response.folders.forEach(function (folder) {
           const link = document.createElement('a');
           const folderEl = document.createElement('div');
-          folderEl.className = 'folder storage_el';
+          const icon = document.createElement('img');
+
           link.innerText = folder;
           link.href = '#';
+          folderEl.className = 'folder storage_el';
+          icon.src = '/images/icons/folder.svg'
+
           if(folder == '.') {
             link.onclick = function () {
               let folderPathArr = folderPath.split('\\');
@@ -35,7 +38,10 @@ function browseFolder(folderPath) {
               return false;
            };
           }
-          content.appendChild(folderEl).appendChild(link);
+
+          const appendfolderEl = content.appendChild(folderEl);
+          appendfolderEl.appendChild(icon);
+          appendfolderEl.appendChild(link);
         });
 
         //file
@@ -43,11 +49,16 @@ function browseFolder(folderPath) {
           const fileEl = document.createElement('div');
           const link = document.createElement('a');
           const size = document.createElement('span');
-          size.innerText = response.fileSize[index] + ' Bytes'
+          const icon = document.createElement('img');
+
           fileEl.className = 'file storage_el';
           link.innerText = file;
           link.href = 'download.php?file=' + encodeURIComponent(folderPath + '\\' + file);
-          const appendFileEl = content.appendChild(fileEl)
+          size.innerText = response.fileSize[index] + ' Bytes'
+          icon.src = '/images/icons/file.svg'
+
+          const appendFileEl = content.appendChild(fileEl);
+          appendFileEl.appendChild(icon);
           appendFileEl.appendChild(link);
           appendFileEl.appendChild(size);
         });
