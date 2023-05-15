@@ -51,13 +51,13 @@ function browseFolder(folderPath) {
           const size = document.createElement('span');
           const icon = document.createElement('img');
           const appendFileEl = content.appendChild(fileEl);
-          const fileExtension = file.split('.').pop();
+          const extension = response.fileExtension[index];
 
           fileEl.className = 'file storage_el';
           link.innerText = file;
           link.href = 'download.php?file=' + encodeURIComponent(folderPath + '\\' + file);
-          size.innerText = response.fileSize[index] + ' Bytes'
-          icon.src = '/images/icons/file.svg'
+          size.innerText = response.fileSize[index] + ' Bytes';
+          icon.src = '/images/icons/' + extension +'.svg';
 
           appendFileEl.appendChild(icon);
           appendFileEl.appendChild(link);

@@ -1,9 +1,7 @@
 <?php
 $folder = isset($_GET['folder']) ? $_GET['folder'] : '';
 
-// Проверяем существование папки и ее доступность для чтения
 if (is_dir($folder) && is_readable($folder)) {
-  // Получаем список файлов и папок
   $folders = array();
   $files = array();
   $fileSize = array();
@@ -14,8 +12,15 @@ if (is_dir($folder) && is_readable($folder)) {
       if (is_dir($folder . '\\' . $entry)) {
         $folders[] = $entry;
       } else {
+        $iconPath = 'images/icons/' . end(explode(".", $entry)) . '.svg';
         $files[] = $entry;
         $fileSize[] = filesize($folder . '\\' . $entry);
+        //file extension check
+        if(is_file($iconPath)){
+          $fileExtension[] = end(explode(".", $entry));
+        } else {
+          $fileExtension[] = 'file';
+        }
       }
     }
   }
@@ -23,7 +28,7 @@ if (is_dir($folder) && is_readable($folder)) {
 
   // Отправляем JSON-ответ
   header('Content-Type: application/json');
-  echo json_encode(array('folders' => $folders, 'files' => $files, 'fileSize' => $fileSize));
+  echo json_encode(array('folders' => $folders, 'files' => $files, 'fileSize' => $fileSize, 'fileExtension' => $fileExtension));
 } else {
   header('HTTP/1.1 404 Not Found');
 }

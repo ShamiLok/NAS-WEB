@@ -58,11 +58,12 @@ h1 {
 }
 
 .storage_el img{
-    height: 20px;
-    width: 20px;
+    height: 30px;
+    width: 30px;
 }
 
 .storage_el a {
+    line-height: 30px;
     font-size: 18px;
     padding-left: 10px;
     color: #000;
@@ -70,6 +71,7 @@ h1 {
 }
 
 .file span{
+    line-height: 30px;
     font-size: 11px;
     white-space: nowrap;
 }
