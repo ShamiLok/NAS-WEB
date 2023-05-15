@@ -5,7 +5,7 @@ function browseFolder(folderPath) {
   content.innerHTML = '';
   path.innerText = folderPath;
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'browse.php?folder=' + encodeURIComponent(folderPath), true);
+  xhr.open('GET', 'browse.php?folder=' + encodeURIComponent(folderPath));
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
@@ -17,11 +17,11 @@ function browseFolder(folderPath) {
           const link = document.createElement('a');
           const folderEl = document.createElement('div');
           const icon = document.createElement('img');
+          const appendfolderEl = content.appendChild(folderEl);
 
           link.innerText = folder;
           link.href = '#';
           folderEl.className = 'folder storage_el';
-          icon.src = '/images/icons/folder.svg'
 
           if(folder == '.') {
             link.onclick = function () {
@@ -33,14 +33,14 @@ function browseFolder(folderPath) {
               return false;
             };
           } else {
+            icon.src = '/images/icons/folder.svg';
+            appendfolderEl.appendChild(icon);
             link.onclick = function () {
               browseFolder(folderPath + '\\' + folder);
               return false;
            };
           }
 
-          const appendfolderEl = content.appendChild(folderEl);
-          appendfolderEl.appendChild(icon);
           appendfolderEl.appendChild(link);
         });
 
@@ -50,6 +50,8 @@ function browseFolder(folderPath) {
           const link = document.createElement('a');
           const size = document.createElement('span');
           const icon = document.createElement('img');
+          const appendFileEl = content.appendChild(fileEl);
+          const fileExtension = file.split('.').pop();
 
           fileEl.className = 'file storage_el';
           link.innerText = file;
@@ -57,7 +59,6 @@ function browseFolder(folderPath) {
           size.innerText = response.fileSize[index] + ' Bytes'
           icon.src = '/images/icons/file.svg'
 
-          const appendFileEl = content.appendChild(fileEl);
           appendFileEl.appendChild(icon);
           appendFileEl.appendChild(link);
           appendFileEl.appendChild(size);
