@@ -97,28 +97,28 @@ h1 {
     white-space: nowrap;
 }
 
-/* create a folder */
-#createFolder {
+/* popup forms */
+.popup-form {
     display: flex;
     flex-direction: column;
 }
 
-.create-folder__item {
+.popup-form__item {
     display: inline-block;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.create-folder__item:last-child {
+.popup-form__item:last-child {
     margin-bottom: 0;
 }
 
-.create-folder__label {
+.popup-form__label {
     font-size: 20px;
 }
 
-.create-folder__input,
-.create-folder__btn {
+.popup-form__input,
+.popup-form__btn {
     padding: 5px 10px;
     border: #000 1px solid;
     border-radius: 5px;

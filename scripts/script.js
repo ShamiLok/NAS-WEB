@@ -86,21 +86,50 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   if (document.querySelector("form")) {
-      const forms = document.querySelectorAll("form");
+      const form = document.getElementById("createFolder");
 
-      forms.forEach(form => {
-          form.addEventListener("submit", function (e) {
-              e.preventDefault();
-              const formData = new FormData(this);
-              formData.append('path', path.innerHTML)
-              ajaxSend(formData)
-                  .then((response) => {
-                      // console.log(response);
-                      form.reset();
-                  })
-                  .catch((err) => console.error(err))
-          });
+      form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const formData = new FormData(this);
+          formData.append('path', path.innerHTML)
+          ajaxSend(formData)
+              .then((response) => {
+                  // console.log(response);
+                  form.reset();
+              })
+              .catch((err) => console.error(err))
       });
   }
+
+});
+
+// upload file
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const ajaxSend = async (formData) => {
+      const response = await fetch("upload-file.php", {
+          method: "POST",
+          body: formData
+      });
+      if (!response.ok) {
+          throw new Error(`Error ${url}, error status ${response.status}`);
+      }
+      return await response.text();
+  };
+
+  const form = document.getElementById("uploadFile");
+
+  form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      formData.append('path', path.innerHTML)
+      ajaxSend(formData)
+          .then((response) => {
+              // console.log(response);
+              form.reset();
+          })
+          .catch((err) => console.error(err))
+  });
 
 });

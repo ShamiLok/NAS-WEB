@@ -26,10 +26,10 @@
         <div class="popup__body">
           <div class="popup__content">
             <div class="close-popup popup__close">&times</div>
-            <form action="" method="post" id="createFolder">
-              <label class="create-folder__item create-folder__label" for="folder-name">Сreate a folder</label>
-              <input class="create-folder__item create-folder__input" id="folder-name" type="text" placeholder="Folder name" name="folderName" required>
-              <button class="create-folder__item create-folder__btn" type="submit" id="send-folder-name">Create</button>
+            <form action="" method="post" id="createFolder" class="popup-form">
+              <label class="popup-form__item popup-form__label" for="folder-name">Сreate a folder</label>
+              <input class="popup-form__item popup-form__input" id="folder-name" type="text" placeholder="Folder name" name="folderName" required>
+              <button class="popup-form__item popup-form__btn" type="submit">Create</button>
             </form>
           </div>
         </div>
@@ -39,8 +39,10 @@
         <div class="popup__body">
           <div class="popup__content">
             <div class="close-popup popup__close">&times</div>
-            <form action="" method="post">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui at error nostrum eos dignissimos consequuntur neque odio, aliquam molestiae aliquid ad, deserunt provident quam iste suscipit cupiditate consequatur accusamus necessitatibus?</p>
+            <form action="" method="post" id="uploadFile" class="popup-form">
+              <label class="popup-form__item popup-form__label" for="select-file">Upload file</label>
+              <input class="popup-form__item popup-form__input" id="select-file" type="file" name="fileName" required>
+              <button class="popup-form__item popup-form__btn" type="submit">Upload</button>
             </form>
           </div>
         </div>
