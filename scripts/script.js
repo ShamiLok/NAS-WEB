@@ -73,6 +73,7 @@ browseFolder('storage');
 
 //create a folder
 document.addEventListener("DOMContentLoaded", () => {
+  const status = document.getElementById('create-folder-status');
 
   const ajaxSend = async (formData) => {
       const response = await fetch("create-folder.php", {
@@ -85,27 +86,28 @@ document.addEventListener("DOMContentLoaded", () => {
       return await response.text();
   };
 
-  if (document.querySelector("form")) {
-      const form = document.getElementById("createFolder");
+  const form = document.getElementById("createFolder");
 
-      form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          const formData = new FormData(this);
-          formData.append('path', path.innerHTML)
-          ajaxSend(formData)
-              .then((response) => {
-                  // console.log(response);
-                  form.reset();
-              })
-              .catch((err) => console.error(err))
-      });
-  }
+  form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      formData.append('path', path.innerHTML)
+      ajaxSend(formData)
+          .then((response) => {
+              status.innerHTML = response;
+              console.log(response);
+              form.reset();
+          })
+          .catch((err) => console.error(err))
+  });
+  
 
 });
 
 // upload file
 
 document.addEventListener("DOMContentLoaded", () => {
+  const status = document.getElementById('upload-file-status')
 
   const ajaxSend = async (formData) => {
       const response = await fetch("upload-file.php", {
@@ -126,7 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
       formData.append('path', path.innerHTML)
       ajaxSend(formData)
           .then((response) => {
-              // console.log(response);
+              status.innerHTML = response;
+              console.log(response);
               form.reset();
           })
           .catch((err) => console.error(err))

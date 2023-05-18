@@ -1,6 +1,6 @@
 const popupLinks = document.querySelectorAll('.popup-link');
 const body = document.querySelector('body');
-const popupCloseIcon = document.querySelectorAll('.close-popup');
+const popupCloseIcon = document.querySelectorAll('.popup__close');
 const lockPadding = document.querySelectorAll('.lock-padding');
 
 let unlock = true;
@@ -56,7 +56,7 @@ function popupClose(popupActive, doUnlock = true) {
 }
 
 function bodyLock() {
-    console.log(document.querySelector('.wrapper'))
+    console.log('scroll lock');
     const lockPaddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
 
     if(lockPadding.length) {
@@ -75,6 +75,7 @@ function bodyLock() {
 }
 
 function bodyUnlock() {
+    console.log('scroll unlock');
     setTimeout(function () {
         if(lockPadding.length) {
             for (let index = 0; index < lockPadding.length; index++) {

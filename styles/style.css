@@ -97,29 +97,3 @@ h1 {
     white-space: nowrap;
 }
 
-/* popup forms */
-.popup-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.popup-form__item {
-    display: inline-block;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.popup-form__item:last-child {
-    margin-bottom: 0;
-}
-
-.popup-form__label {
-    font-size: 20px;
-}
-
-.popup-form__input,
-.popup-form__btn {
-    padding: 5px 10px;
-    border: #000 1px solid;
-    border-radius: 5px;
-}

@@ -6,4 +6,5 @@ $path = $_POST['path'];
 if(!file_exists($path . '\\' . $name)) {
     move_uploaded_file($tmp_name, "$path\\$name");
 }
+echo 'The file was uploaded successfully';
 ?> 

@@ -25,10 +25,11 @@
       <div id="create-folder-popup" class="popup">
         <div class="popup__body">
           <div class="popup__content">
-            <div class="close-popup popup__close">&times</div>
+            <div class="popup__close">&times</div>
             <form action="" method="post" id="createFolder" class="popup-form">
               <label class="popup-form__item popup-form__label" for="folder-name">Сreate a folder</label>
               <input class="popup-form__item popup-form__input" id="folder-name" type="text" placeholder="Folder name" name="folderName" required>
+              <div id="create-folder-status" class="popup-form__status"></div>
               <button class="popup-form__item popup-form__btn" type="submit">Create</button>
             </form>
           </div>
@@ -38,10 +39,11 @@
       <div id="upload-file-popup" class="popup">
         <div class="popup__body">
           <div class="popup__content">
-            <div class="close-popup popup__close">&times</div>
+            <div class="popup__close">&times</div>
             <form action="" method="post" id="uploadFile" class="popup-form">
               <label class="popup-form__item popup-form__label" for="select-file">Upload file</label>
               <input class="popup-form__item popup-form__input" id="select-file" type="file" name="fileName" required>
+              <div id="upload-file-status" class="popup-form__status"></div>
               <button class="popup-form__item popup-form__btn" type="submit">Upload</button>
             </form>
           </div>
