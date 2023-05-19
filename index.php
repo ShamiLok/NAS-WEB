@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>NAS WEB</title>
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/popup.css">
   </head>
   <body>
     <div class="wrapper">

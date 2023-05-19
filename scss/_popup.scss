@@ -1,5 +1,7 @@
-body.lock {
-    overflow: hidden;
+body{
+    &.lock {
+        overflow: hidden;
+    }
 }
 
 .popup {
@@ -14,15 +16,13 @@ body.lock {
     overflow-y: auto;
     overflow-x: hidden;
     transition: all .8s ease 0s;
-}
-
-.popup.open {
-    opacity: 1;
-    visibility: visible;
-}
-
-.popup.open .popup__content {
-    opacity: 1;
+    &.open {
+        opacity: 1;
+        visibility: visible;
+        .popup__content {
+            opacity: 1;
+        }
+    }
 }
 
 .popup__body {
@@ -64,10 +64,9 @@ body.lock {
     display: inline-block;
     margin: 10px 0;
     text-align: center;
-}
-
-.popup-form__item:last-child {
-    margin-bottom: 0;
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 
 .popup-form__label {
