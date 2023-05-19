@@ -54,10 +54,26 @@ function browseFolder(folderPath) {
         const appendFileEl = content.appendChild(fileEl);
         const extension = response.fileExtension[index];
 
+        const fileSize = function() {
+          if((response.fileSize[index] / (1024 * 1024 * 1024)) > 1){
+            //gb
+            return Math.round((response.fileSize[index] / (1024 * 1024 * 1024)) * 10) / 10 + 'Gb';
+          } else if((response.fileSize[index] / (1024 * 1024)) > 1) {
+            //mb
+            return Math.round((response.fileSize[index] / (1024 * 1024)) * 10) / 10 + 'Mb';
+          } else if((response.fileSize[index] / 1024) > 1) {
+            //kb
+            return Math.round((response.fileSize[index] / 1024) * 10) / 10 + 'Kb';
+          } else {
+            //b
+            return response.fileSize[index] + 'b';
+          }
+        }
+
         fileEl.className = 'file storage_el';
         link.innerText = file;
         link.href = 'download.php?file=' + encodeURIComponent(folderPath + '\\' + file);
-        size.innerText = response.fileSize[index] + ' Bytes';
+        size.innerText = fileSize()
         icon.src = '/images/icons/' + extension +'.svg';
 
         appendFileEl.appendChild(icon);
