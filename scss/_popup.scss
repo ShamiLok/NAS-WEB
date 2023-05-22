@@ -55,12 +55,12 @@ body{
 }
 
 /* popup forms */
-.popup-form {
+.popup__form {
     display: flex;
     flex-direction: column;
 }
 
-.popup-form__item {
+.popup__form__item {
     display: inline-block;
     margin: 10px 0;
     text-align: center;
@@ -69,18 +69,18 @@ body{
     }
 }
 
-.popup-form__label {
+.popup__form__label {
     font-size: 20px;
 }
 
-.popup-form__input,
-.popup-form__btn {
+.popup__form__input,
+.popup__form__btn {
     padding: 5px 10px;
     border: #000 1px solid;
     border-radius: 5px;
 }
 
-.popup-form__status {
+.popup__form__status {
     font-size: 14px;
     text-align: center;
 }

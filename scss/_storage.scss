@@ -6,7 +6,7 @@
     width: 100%;
     padding: 5px 15px;
     background: #f5f5f5;
-    border: 1px #000 solid;
+    border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     margin: 10px;
 }
@@ -17,7 +17,7 @@
     width: 100%;
     background: #f5f5f5;
     margin: 10px;
-    border: 1px #000 solid;
+    border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     a{
         display: inline-block;
@@ -25,7 +25,7 @@
         padding: 5px 10px;
         text-align: center;
         &:last-child {
-            border-left: 1px #000 solid;
+            border-left: 1px solid rgba(0, 0, 0, 0.3);
         }
     }
 }
@@ -36,6 +36,7 @@
     margin: 20px 10px;
     padding: 5px 15px;
     background: #f5f5f5;
+    border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     width: 100%;
     span {
@@ -52,7 +53,7 @@
     width: 100%;
     transition: background .3s;
     &:hover {
-        background: #ececec;
+        background: #e7e7e7;
     }
     img{
         height: 30px;
