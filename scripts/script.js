@@ -7,7 +7,7 @@ function browseFolder(folderPath) {
   content.innerHTML = '';
   path.innerText = folderPath;
 
-  fetch('browse.php?folder=' + encodeURIComponent(folderPath))
+  fetch('../server/browse.php?folder=' + encodeURIComponent(folderPath))
     .then(response => response.json())
     .then(data => {
       // folder
@@ -69,7 +69,7 @@ function browseFolder(folderPath) {
 
         fileEl.className = 'file storage_el';
         link.innerText = file;
-        link.href = 'download.php?file=' + encodeURIComponent(folderPath + '\\' + file);
+        link.href = '../server/download.php?file=' + encodeURIComponent(folderPath + '\\' + file);
         size.innerText = roundfileSize(data.fileSize[index]);
         icon.src = '/images/icons/' + extension + '.svg';
 
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const formData = new FormData(this);
     formData.append('path', path.innerHTML);
-    ajaxSend(formData, "create-folder.php", createFolderStatus);
+    ajaxSend(formData, "../server/create-folder.php", createFolderStatus);
     this.reset();
   });
 
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const formData = new FormData(this);
     formData.append('path', path.innerHTML);
-    ajaxSend(formData, "upload-file.php", uploadFileStatus);
+    ajaxSend(formData, "../server/upload-file.php", uploadFileStatus);
     this.reset();
   });
 });

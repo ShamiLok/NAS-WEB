@@ -1,6 +1,6 @@
 <?php
 $folder = isset($_GET['folder']) ? $_GET['folder'] : '';
-
+// print($folder);
 if (is_dir($folder) && is_readable($folder)) {
   $folders = array();
   $files = array();
@@ -9,14 +9,14 @@ if (is_dir($folder) && is_readable($folder)) {
   
   while ($entry = readdir($handle)) {
     if ($entry != '..') {
-      if (is_dir($folder . '\\' . $entry)) {
+      if (is_dir($folder . DIRECTORY_SEPARATOR . $entry)) {
         $folders[] = $entry;
       } else {
         $iconPath = 'images/icons/' . end(explode(".", $entry)) . '.svg';
         $files[] = $entry;
-        $fileSize[] = filesize($folder . '\\' . $entry);
+        $fileSize[] = filesize($folder . DIRECTORY_SEPARATOR . $entry);
         //file extension check
-        if(is_file($iconPath)){
+        if (is_file($iconPath)) {
           $fileExtension[] = end(explode(".", $entry));
         } else {
           $fileExtension[] = 'file';
