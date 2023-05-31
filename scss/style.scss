@@ -12,11 +12,10 @@ a {
     text-decoration: none;
     color: #000;
 }
-
-h1 {
-    text-align: center;
-    padding: 10px 0;
+li {
+    list-style: none;
 }
 
 @import 'storage';
 @import 'popup';
+@import 'menu';

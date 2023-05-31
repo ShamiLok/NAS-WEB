@@ -7,12 +7,28 @@
   </head>
   <body>
     <div class="wrapper">
-      <h1>NAS WEB</h1>
+      <header>
+        <h1>NAS WEB</h1>
+        <div id="menu">
+          <div id="burger__menu">
+            <span></span>
+          </div>
+          
+          <nav id="menu__nav">
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <div id="dark"></div>
       <div class="storage-nav">
         <div id="path"></div>
         <div class="storage-nav__add">
             <a href="#create-folder-popup" id="create-folder" class="popup-link">Create folder</a>
-            <a href="#upload-file-popup" id="upload file" class="popup-link">Upload file</a>
+            <a href="#upload-file-popup" id="upload-file" class="popup-link">Upload file</a>
         </div>
         <div class="storage-nav__info">
           <span>Name</span>
@@ -51,6 +67,7 @@
 
       <script src="scripts/script.js"></script>
       <script src="scripts/popup.js"></script>
+      <script src="scripts/menu.js"></script>
     </div>
   </body>
 </html>
