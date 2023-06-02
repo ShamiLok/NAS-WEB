@@ -1,6 +1,5 @@
 const burgerMenu = document.getElementById('burger__menu')
 const menu = document.getElementById('menu__nav')
-const dark = document.getElementById('dark')
 burgerMenu.addEventListener('click', openMenu)
 function openMenu(){
     if(menu.classList.contains('open')){

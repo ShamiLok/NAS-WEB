@@ -21,13 +21,13 @@ h1 {
     span {
         height: 2px;
         width: 30px;
-        background: #000;
+        background: var(--color-text);
     }
     &::before{
         content: '';
         height: 2px;
         width: 30px;
-        background: #000;
+        background: var(--color-text);
         position: absolute;
         left: 0;
         top: 0;
@@ -36,7 +36,7 @@ h1 {
         content: '';
         height: 2px;
         width: 30px;
-        background: #000;
+        background: var(--color-text);
         position: absolute;
         left: 0;
         bottom: 0px;
