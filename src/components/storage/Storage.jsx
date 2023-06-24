@@ -8,6 +8,7 @@ class Storage extends React.Component {
       folders: [],
       files: [],
       path: '',
+      serverIsAvailable: true
     };
   }
 
@@ -18,17 +19,24 @@ class Storage extends React.Component {
   }
 
   browseFolder(folderPath) {
-    axios.get(`http://nas/browse.php?folder=${encodeURIComponent(folderPath)}`, { headers: { 'Content-Type': 'application/json' } })
+    axios
+      .get(`http://nas/browse.php?folder=${encodeURIComponent(folderPath)}`, { headers: { 'Content-Type': 'application/json' } })
       .then((response) => {
         const { folders, files } = response.data;
         this.setState({
           folders,
           files,
           path: folderPath,
+          serverIsAvailable: true
         });
       })
       .catch((error) => {
-        console.error(error);
+        if (error.response) {
+          console.log(error.response.status);
+        } else {
+          console.error(error);
+        }
+        this.setState({serverIsAvailable: false})
       });
   }
 
@@ -91,24 +99,33 @@ class Storage extends React.Component {
   }
 
   render() {
-    return (
-      <div class="storage-nav">
-        <div id="path">{this.state.path}</div>
-        <div class="storage-nav__add">
-            <a href="#create-folder-popup" id="create-folder" class="popup-link">Create folder</a>
-            <a href="#upload-file-popup" id="upload-file" class="popup-link">Upload file</a>
+    if(this.state.serverIsAvailable){
+      return (
+        <div className="storage-nav">
+          <h1>{!this.state.serverIsAvailable && 'asd'}</h1>
+          <div id="path">{this.state.path}</div>
+          <div className="storage-nav__add">
+              <a href="#create-folder-popup" id="create-folder" class="popup-link">Create folder</a>
+              <a href="#upload-file-popup" id="upload-file" class="popup-link">Upload file</a>
+          </div>
+          <div className="storage-nav__info">
+              <span>Name</span>
+              <span>Size</span>
+          </div>
+          <div id="content">
+            {this.renderFolders()}
+            {this.renderFiles()}
+          </div>
         </div>
-        <div class="storage-nav__info">
-            <span>Name</span>
-            <span>Size</span>
+      )
+    } else {
+      return (
+        <div className="server-unavailable">
+          Сервер недоступен или возникла ошибка на сервере
         </div>
-        <div id="content">
-          {this.renderFolders()}
-          {this.renderFiles()}
-        </div>
-      </div>
-      
-    )
+      )
+    }
+    
     
   }
 }
