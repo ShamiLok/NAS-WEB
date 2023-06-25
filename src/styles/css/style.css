@@ -89,7 +89,7 @@ li {
 .storage_el:hover {
   background: var(--bg-hover);
 }
-.storage_el img {
+.storage_el svg {
   height: 30px;
   width: 30px;
 }
@@ -104,6 +104,11 @@ li {
   line-height: 30px;
   font-size: 11px;
   white-space: nowrap;
+}
+
+.server-unavailable {
+  background: #ff5f5f;
+  padding: 30px;
 }
 
 body.lock {
