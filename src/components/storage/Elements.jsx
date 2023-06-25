@@ -1,4 +1,5 @@
 import React from "react";
+import FileIcon from "./FileIcon";
 
 function Elements(props) {
   const { folders, files, path, handleFolderClick, fileSize } = props;
@@ -48,7 +49,7 @@ function Elements(props) {
 
         return (
           <div className="file storage_el" key={`file_${index}`}>
-            {/* <img src={`/images/icons/${file}.svg`} alt={file} /> */}
+            <FileIcon file={file} />
             <a href={`http://nas/download.php?file=${encodeURIComponent(filePath)}`}>{file}</a>
             <span>{roundFileSize(fileSize[index])}</span>
           </div>

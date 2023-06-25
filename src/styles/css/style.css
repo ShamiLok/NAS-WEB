@@ -89,7 +89,7 @@ li {
 .storage_el:hover {
   background: var(--bg-hover);
 }
-.storage_el img {
+.storage_el svg {
   height: 30px;
   width: 30px;
 }
