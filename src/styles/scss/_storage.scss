@@ -1,5 +1,5 @@
 .storage-nav {
-    width: 400px;
+    max-width: 40vw;
 }
 
 #path {
@@ -37,7 +37,7 @@
     display: flex;
     justify-content: space-between;
     margin: 20px 10px;
-    padding: 5px 15px;
+    padding: 5px 55px;
     background: var(--bg-block);
     border: 1px solid var(--bg-border);
     border-radius: 5px;
@@ -49,6 +49,7 @@
 
 .storage_el {
     display: flex;
+    align-items: center;
     margin: 20px 10px;
     padding: 5px 15px;
     background: var(--bg-block);
@@ -63,10 +64,18 @@
         width: 30px;
     }
     a {
+        display: flex;
         line-height: 30px;
         font-size: 18px;
         padding-left: 10px;
         width: 100%;
+        
+    }
+    .storage__el-actions {
+        display: flex;
+        span {
+            padding-right: 10px;
+        }
     }
 }
 

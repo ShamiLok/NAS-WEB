@@ -108,7 +108,7 @@ const Storage = () => {
           <span>Name</span>
           <span>Size</span>
         </div>
-        <Elements folders={folders} files={files} path={path} fileSize={fileSize} handleFolderClick={handleFolderClick} />
+        <Elements folders={folders} files={files} path={path} fileSize={fileSize} handleFolderClick={handleFolderClick} browseFolder={browseFolder}/>
         <Popup active={modalCreateActive} setActive={setModalCreateActive}>
           <form action="" method="post" id="createFolder" className="popup__form" onSubmit={(e) => { e.preventDefault(); handleCreateFolder(e.target.folderName.value)}}>
             <label className="popup__form__item popup__form__label" htmlFor="folder-name">Create a folder</label>
@@ -129,6 +129,7 @@ const Storage = () => {
             <button className="popup__form__item popup__form__btn" type="submit">Upload</button>
           </form>
         </Popup>
+            
       </div>
     );
   } else {

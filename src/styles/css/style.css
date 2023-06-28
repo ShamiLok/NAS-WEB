@@ -29,7 +29,7 @@ li {
 }
 
 .storage-nav {
-  width: 400px;
+  max-width: 40vw;
 }
 
 #path {
@@ -67,7 +67,7 @@ li {
   display: flex;
   justify-content: space-between;
   margin: 20px 10px;
-  padding: 5px 15px;
+  padding: 5px 55px;
   background: var(--bg-block);
   border: 1px solid var(--bg-border);
   border-radius: 5px;
@@ -79,6 +79,7 @@ li {
 
 .storage_el {
   display: flex;
+  align-items: center;
   margin: 20px 10px;
   padding: 5px 15px;
   background: var(--bg-block);
@@ -94,10 +95,17 @@ li {
   width: 30px;
 }
 .storage_el a {
+  display: flex;
   line-height: 30px;
   font-size: 18px;
   padding-left: 10px;
   width: 100%;
+}
+.storage_el .storage__el-actions {
+  display: flex;
+}
+.storage_el .storage__el-actions span {
+  padding-right: 10px;
 }
 
 .file span {
@@ -123,14 +131,14 @@ li {
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 .modal .modal__content {
   padding: 20px;
   border-radius: 12px;
   background: #fff;
   transform: scale(0.5);
-  transition: 0.4s;
+  transition: 0.2s;
   width: 50vw;
   background-color: var(--bg-body);
 }
@@ -182,6 +190,32 @@ li {
 .popup__form__status {
   font-size: 14px;
   text-align: center;
+}
+
+.popup__delete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.popup__delete h3 {
+  font-size: 20px;
+  font-weight: normal;
+}
+.popup__delete .popup__button-block {
+  margin-top: 20px;
+}
+.popup__delete .popup__button-block button {
+  color: var(--color-text);
+  background: var(--bg-block);
+  padding: 10px 40px;
+  outline: none;
+  border: 1px solid var(--bg-border);
+  margin-right: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.popup__delete .popup__button-block button:hover {
+  background: var(--bg-hover);
 }
 
 header {

@@ -75,3 +75,29 @@
     font-size: 14px;
     text-align: center;
 }
+
+.popup__delete{
+    h3 {
+        font-size: 20px;
+        font-weight: normal;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .popup__button-block {
+        margin-top: 20px;
+        button {
+            color: var(--color-text);
+            background: var(--bg-block);
+            padding: 10px 40px;
+            outline: none;
+            border: 1px solid var(--bg-border);
+            margin-right: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            &:hover {
+                background: var(--bg-hover);
+            }
+        }
+    }
+}

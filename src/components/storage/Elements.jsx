@@ -1,8 +1,14 @@
-import React from "react";
-import FileIcon from "./FileIcon";
+import React, { useState } from "react";
+import ElementIcon from "./ElementIcon";
+import { deleteElement } from "../../services/DeleteElement";
+import Popup from "../Popup";
+import { AiOutlineDelete } from 'react-icons/ai';
 
 function Elements(props) {
-  const { folders, files, path, handleFolderClick, fileSize } = props;
+  const { folders, files, path, handleFolderClick, fileSize, browseFolder } = props;
+  const [modalDeleteActive, setModalDeleteActive] = useState(false);
+  const [deleteElementType, setDeleteElementType] = useState('')
+  const [deleteElementName, setDeleteElementName] = useState('')
 
   const roundFileSize = (sizeInBytes) => {
     if (sizeInBytes / (1024 * 1024 * 1024) > 1) {
@@ -20,6 +26,12 @@ function Elements(props) {
     }
   };
 
+  const deleteElementHandler = () => {
+    deleteElement({deleteElementType, deleteElementName, path})
+    browseFolder(path)
+    setModalDeleteActive(false)
+  }
+
   return (
     <div id="content">
       {folders.map((folder, index) => {
@@ -36,10 +48,16 @@ function Elements(props) {
         ) : (
           <a href="#/" onClick={() => handleFolderClick(folder)}>{folder}</a>
         );
-
+ 
         return (
           <div className="folder storage_el" key={`folder_${index}`}>
+            <ElementIcon type='folder'/>
             {link}
+            <div className="storage__el-actions">
+              <a href="#" onClick={() => {setModalDeleteActive(true); setDeleteElementType('folder'); setDeleteElementName(folder)}}>
+                <AiOutlineDelete />
+              </a>
+            </div>
           </div>
         );
       })}
@@ -49,12 +67,28 @@ function Elements(props) {
 
         return (
           <div className="file storage_el" key={`file_${index}`}>
-            <FileIcon file={file} />
+            <ElementIcon file={file} type='file'/>
             <a href={`http://nas/download.php?file=${encodeURIComponent(filePath)}`}>{file}</a>
-            <span>{roundFileSize(fileSize[index])}</span>
+            <div className="storage__el-actions">
+              <span>{roundFileSize(fileSize[index])}</span>
+              <a href="#" onClick={() => {setModalDeleteActive(true); setDeleteElementType('file'); setDeleteElementName(file)}}>
+                <AiOutlineDelete />
+              </a>
+              
+            </div>
           </div>
         );
       })}
+
+      <Popup active={modalDeleteActive} setActive={setModalDeleteActive}>
+        <div className="popup__delete">
+          <h3>Are you sure you want to delete the folder?</h3>
+          <div className="popup__button-block">
+            <button onClick={() => {deleteElementHandler()}}>Yes</button>
+            <button onClick={() => {setModalDeleteActive(false)}}>No</button>
+          </div>
+        </div>
+      </Popup>
     </div>
   );
 }
