@@ -5,7 +5,7 @@ import axios from "axios";
 export const deleteElement = async (data) => {
   console.log(data)
   try {
-    await axios.post('http://nas/delete-element.php', data, {
+    await axios.post('http://localhost:8000/delete-element.php', data, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

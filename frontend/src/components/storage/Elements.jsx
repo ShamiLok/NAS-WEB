@@ -68,7 +68,7 @@ function Elements(props) {
         return (
           <div className="file storage_el" key={`file_${index}`}>
             <ElementIcon file={file} type='file'/>
-            <a href={`http://nas/download.php?file=${encodeURIComponent(filePath)}`}>{file}</a>
+            <a href={`http://localhost:8000/download.php?file=${encodeURIComponent(filePath)}`}>{file}</a>
             <div className="storage__el-actions">
               <span>{roundFileSize(fileSize[index])}</span>
               <a href="#" onClick={() => {setModalDeleteActive(true); setDeleteElementType('file'); setDeleteElementName(file)}}>

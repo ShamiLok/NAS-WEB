@@ -26,7 +26,7 @@ const Storage = () => {
 
   const browseFolder = (folderPath) => {
     axios
-      .get(`http://nas/browse.php?folder=${encodeURIComponent(folderPath)}`, { headers: { 'Content-Type': 'application/json' } })
+      .get(`http://localhost:8000/browse.php?folder=${encodeURIComponent(folderPath)}`, { headers: { 'Content-Type': 'application/json' } })
       .then((response) => {
         const { folders, files, fileSize } = response.data;
         setFolders(folders);
@@ -46,14 +46,14 @@ const Storage = () => {
   };
 
   const handleFolderClick = (folder) => {
-    const folderPath = folder === '.' ? getParentFolderPath(path) : `${path}\\${folder}`;
+    const folderPath = folder === '.' ? getParentFolderPath(path) : `${path}/${folder}`;
     browseFolder(folderPath);
   };
 
   const getParentFolderPath = (path) => {
-    const folderPathArr = path.split('\\');
+    const folderPathArr = path.split('/');
     folderPathArr.pop();
-    return folderPathArr.join('\\');
+    return folderPathArr.join('/');
   };
 
   const handleCreateFolder = async (folderName) => {
